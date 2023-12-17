@@ -71,5 +71,34 @@ const removeParenth = function(str) {
 };
 
 const scoreScrabble = function(str) {
-  // your code here - don't forget to return a number!
+  // Source of truth
+  const points = {
+        1: ['a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'],
+        2: ['d', 'g'],
+        3: ['b', 'c', 'm', 'p'],
+        4: ['f', 'h', 'v', 'w', 'y'],
+        5: ['k'],
+        8: ['j', 'x'],
+        10: ['q', 'z']
+  };
+    
+  // Split original string into an array.
+  let word = str.split("");
+
+  // Create a new array with the values of each letter.
+  let letterValues = word.map(letter => {
+      for (let key in points) {
+          if (points[key].map(point => point === letter).includes(true)) {
+              return key;
+          }
+      }
+  });
+
+  // Cycle through each value and reduce them to a total sum.
+  let totalValue = letterValues.reduce((total, element) => {
+      return total += Number(element);
+  }, 0);
+
+  // Return the total sum.
+  return totalValue;
 };
