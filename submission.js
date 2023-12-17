@@ -54,7 +54,16 @@ const isPalindrome = function(str) {
 };
 
 const largestPair = function(array) {
-  // your code here - don't forget to return a number!
+  let products = []; 
+  // Cycle through the array and compare pairs of indexes.
+  for (let i = 1; i < array.length; i++) {
+        let currentValue = array[i]; // Start at index 1.
+        let previousValue = array[i - 1];
+        products.push(currentValue * previousValue);
+  }
+    
+  let highestValue = Math.max(...products); // Find the highest product.
+  return highestValue;
 };
 
 const removeParenth = function(str) {
