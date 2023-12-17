@@ -67,7 +67,7 @@ const largestPair = function(array) {
 };
 
 const removeParenth = function(str) {
-  // your code here - don't forget to return a string!
+  return str.split(/\(\w+\)/).join("");
 };
 
 const scoreScrabble = function(str) {
